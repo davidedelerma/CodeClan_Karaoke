@@ -50,7 +50,16 @@ class Room
     @playlist+=songs
   end
 
+  # def items_to_buy_are_in_bar?(items)
+  #   for item in items
+  #     if ! @bar.keys.include?(item)
+  #       items.delete(item)
+  #     end
+  #   end
+  # end
+
   def buy_from_bar(items,guest)
+#still to add option when item is not in the list
     return "guest not in guest list" if ! is_in_guestlist?(guest)
     # array of prices from array of items  
     prices = []    
