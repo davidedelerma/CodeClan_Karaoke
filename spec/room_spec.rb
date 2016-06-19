@@ -105,11 +105,11 @@ class TestRoom < MiniTest::Test
     assert_equal("don't have enough money",test)
   end
 
-  # def test_item_is_not_in_the_bar
-  #   items = [:coke, :wisky]
-  #   newlist = @room1.items_to_buy_are_in_bar?(items)
-  #   assert_equal([:coke],newlist)
-  # end
+  def test_item_is_not_in_the_bar
+    items = [:coke, :wisky]
+    newlist = @room1.items_to_buy_are_in_bar?(items)
+    assert_equal([:coke],newlist)
+  end
 
   def test_guest_favourite_song_is_in_playlist
     cheer=@room1.include_fav_song?(@guest2)

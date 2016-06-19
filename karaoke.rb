@@ -1,3 +1,5 @@
+require "pry-byebug"
+
 require_relative("bar")
 require_relative("guest")
 require_relative("room")
@@ -14,12 +16,13 @@ class Karaoke
     guest_name = @viewer.get_guest_name
     guest_last_name = @viewer.get_guest_last_name
     guest_sort_code = @viewer.get_guest_sort_code
-    guest_account_numbert = @viewer.get_guest_account_numbert
-    guest_balance=@viewer.balance
+    guest_account_numbert = @viewer.get_guest_account_number
+    guest_balance=@viewer.get_guest_balance
 
-    @guest = Guest.new(guest_name,guest_last_name,guest_sort_code,guest_account_numbert,guest_balance) #add favourite song 
+   @song1=Song.new("Coccodrille Rock","Elton John","Don't Shoot Me I'm Only the Piano Player","Pop")
 
-    @song1=Song.new("Coccodrille Rock","Elton John","Don't Shoot Me I'm Only the Piano Player","Pop")
+    @guest = Guest.new(guest_name,guest_last_name,guest_sort_code,guest_account_numbert,guest_balance,@song1) #add favourite song 
+    
     @song2=Song.new("Sweet child o' mine","Guns and Roses","Appetite for ditruction","Rock")
     @song3=Song.new("We are the champions","Queen","News of the World","Pop")
 
@@ -33,8 +36,10 @@ class Karaoke
   end
 #import actions from viewer: check in, check out, buy from bar, check favourite song and exit do a while loop until the action is exit
   def run()
-    @viewer.select_an_option
-    while option == "exit"
+    option = @viewer.select_an_option
+    #binding.pry
+    while option != "exit"
+      #binding.pry
       case option
       when "CI"
         @room1.check_in(@guest)
@@ -44,7 +49,13 @@ class Karaoke
         items=@viewer.insert_array_of_items_to_buy
         @room1.buy_from_bar(items,@guest)
       end
-      @viewer.select_an_option
+      option = @viewer.select_an_option
+      binding.pry
     end
   end 
+
 end
+
+
+karaoke = Karaoke.new(Viewer.new)
+karaoke.run()

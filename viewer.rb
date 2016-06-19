@@ -1,5 +1,10 @@
 class Viewer
 
+  attr_accessor :option
+  def initialize
+    @option=""
+  end
+
   def get_guest_name
     puts "Insert guest name: "
         return gets.chomp
