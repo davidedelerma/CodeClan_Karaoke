@@ -15,9 +15,9 @@ class Karaoke
 
     guest_name = @viewer.get_guest_name
     guest_last_name = @viewer.get_guest_last_name
-    guest_sort_code = @viewer.get_guest_sort_code
-    guest_account_numbert = @viewer.get_guest_account_number
-    guest_balance=@viewer.get_guest_balance
+    guest_sort_code = @viewer.get_guest_sort_code.to_i
+    guest_account_numbert = @viewer.get_guest_account_number.to_i
+    guest_balance=@viewer.get_guest_balance.to_i
 
    @song1=Song.new("Coccodrille Rock","Elton John","Don't Shoot Me I'm Only the Piano Player","Pop")
 
@@ -50,7 +50,6 @@ class Karaoke
         @room1.buy_from_bar(items,@guest)
       end
       option = @viewer.select_an_option
-      binding.pry
     end
   end 
 
